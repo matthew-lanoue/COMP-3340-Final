@@ -19,13 +19,17 @@ def login():
     if request.method == 'POST':
         name = request.form['name']
         password = request.form['password']
-        cursor = mysql.connection.cursor()
-        cursor.execute('''CREATE TABLE IF NOT EXISTS tempTable (name VARCHAR(255) NOT NULL,  password VARCHAR(255) NOT NULL);''')
-        cursor.execute('''INSERT INTO tempTable  VALUES(%s,%s)''',(name,password))
-        mysql.connection.commit()
-        cursor.close()
-        return f"Done!!"
+        if request.form['submit']=='Login':
 
+            cursor = mysql.connection.cursor()
+            cursor.execute('''CREATE TABLE IF NOT EXISTS tempTable (name VARCHAR(255) NOT NULL,  password VARCHAR(255) NOT NULL);''')
+            cursor.execute('''INSERT INTO tempTable  VALUES(%s,%s)''',(name,password))
+            mysql.connection.commit()
+            cursor.close()
+            return f"Done!!"
+        elif request.form['submit']=='Sign Up':
+            return f"Signing UP"
+        
 @app.route('/')
 def index():
     return render_template('index.html')
