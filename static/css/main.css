@@ -2,3 +2,36 @@ body {
     margin: 0 ; 
     font-family: sans-serif;
 }
+.login-fields {
+    display: flex ; 
+    justify-content: center ;
+    align-items: center;
+    height: 100vh;
+}
+form {
+    background-color: grey;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+input[type=text]{
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+}
+.signInButton{
+    display: inline-block;
+    margin-right: 10px;
+}
+.signInButton + .signInButton {
+    margin-left: 220px;
+}

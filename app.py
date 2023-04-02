@@ -10,9 +10,6 @@ app.config['MYSQL_DB'] = 'flask-test'
 
 mysql = MySQL(app)
 
-@app.route('/form')
-def form():
-    return render_template('form.html')
 
 @app.route('/login', methods = ['POST', 'GET'])
 def login():
@@ -21,9 +18,10 @@ def login():
      
     if request.method == 'POST':
         name = request.form['name']
-        age = request.form['age']
+        password = request.form['password']
         cursor = mysql.connection.cursor()
-        cursor.execute('''INSERT INTO tempTable  VALUES(%s,%s)''',(name,age))
+        cursor.execute('''CREATE TABLE IF NOT EXISTS tempTable (name VARCHAR(255) NOT NULL,  password VARCHAR(255) NOT NULL);''')
+        cursor.execute('''INSERT INTO tempTable  VALUES(%s,%s)''',(name,password))
         mysql.connection.commit()
         cursor.close()
         return f"Done!!"

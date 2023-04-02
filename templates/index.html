@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 {% block head %}
- <h1>Template</h1>
+ 
 {% endblock %}
 {% block body %}
- <p>A paragraph lies here</p>
+<div class="login-fields">
+    <form action="/login" method = "POST">
+        <h2>Sign In Here</h2>
+        <p>Username<input type = "text" name = "name" placeholder="username.."/></p>
+        <p>Password<input type = "text" name = "password" placeholder="password.."/></p>
+        <p><input type = "submit" value = "Login"  class="signInButton"/>
+        <input type="submit" value="Sign Up" class="signInButton"></p>
+    </form>
+</div>
 {% endblock %}
